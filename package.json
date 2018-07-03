@@ -1,0 +1,22 @@
+{
+  "name": "@emerald-js/core",
+  "main": "index",
+  "version": "0.0.1",
+  "dependencies": {
+    "@emerald-js/container": "^0.0.5",
+    "dotenv": "^6.0.0",
+    "require-dir": "^1.0.0",
+    "winston": "^3.0.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-es2015-modules-commonjs-optimized": "^6.16.0",
+    "babel-preset-env": "^1.7.0",
+    "coffeescript": "^2.3.1"
+  },
+  "scripts": {
+    "prepare": "bash ./util build",
+    "build": "bash ./util build",
+    "postpublish": "bash ./util clean"
+  }
+}
