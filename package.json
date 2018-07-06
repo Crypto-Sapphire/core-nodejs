@@ -6,7 +6,7 @@
     "@emerald-js/container": "^0.0.5",
     "dotenv": "^6.0.0",
     "require-dir": "^1.0.0",
-    "winston": "^3.0.0"
+    "winston": "^2.*.*"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
