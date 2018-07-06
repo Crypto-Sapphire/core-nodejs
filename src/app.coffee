@@ -1,5 +1,6 @@
-import {Container}   from '@eater/emerald'
+import {Container}   from '@emerald-js/container'
 import ConfigLoader  from './config-loader'
+import Provider         from './provider'
 import dotenv        from 'dotenv'
 import winston       from 'winston'
 import {join}        from 'path'
@@ -9,11 +10,13 @@ export default class App
 
 	constructor: (@container = new Container) ->
 
+	getService: (service) ->
+		@container.get 'service.' + service
 
-	run: (dir) ->
-		# ----------------------------------------
-		# Fase 1: Load the environment variables
-		# from a .env file
+	load: (dir) ->
+# ----------------------------------------
+# Fase 1: Load the environment variables
+# from a .env file
 		dotenv.load()
 
 
@@ -21,7 +24,7 @@ export default class App
 		# Fase 2: Load the config file
 		config = ConfigLoader.load join(dir, 'config')
 
-		@container.instance 'config', config
+		@container.value 'config', config
 
 
 		# ----------------------------------------
@@ -39,7 +42,7 @@ export default class App
 		if drivers.includes 'console'
 			logger.add winston.transports.Console
 
-		@container.instance 'logger', logger
+		@container.value 'logger', logger
 
 
 		# ----------------------------------------
@@ -51,15 +54,20 @@ export default class App
 
 				ServiceProvider.register @container
 
-				@container.define key, =>
-					provider = new ServiceProvider(@container)
-					provider.attachTraits()
-					await provider.boot()
+				@container.define 'service.' + key, @_createFactory ServiceProvider
 
-					provider
 
 		catch error
 			logger.error error
 
 			# This means every uncaught error will exit the application
 			process.exit(1)
+
+	_createFactory: (ServiceProvider) ->
+		(c) =>
+			provider = new ServiceProvider(c)
+
+			provider.attachTraits()
+			await provider.boot()
+
+			provider

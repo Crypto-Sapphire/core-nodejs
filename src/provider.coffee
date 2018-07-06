@@ -7,10 +7,6 @@ export default class Provider
 		@c = @container
 		@g = @c.g
 
-		# properties
-		@debug = @container.config.app.debug
-		@env = @container.config.app.env
-
 	linkedTraits: {}
 
 	traits: (...args) ->
