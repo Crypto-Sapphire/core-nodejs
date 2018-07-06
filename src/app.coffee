@@ -49,7 +49,11 @@ export default class App
 		# Fase 4: construct the service providers
 		try
 			for [key, path] in Object.entries(config.app.services)
-				ServiceProvider = require path
+				if typeof path == 'string'
+					ServiceProvider = require path
+				else
+					ServiceProvider = path
+
 				@providers.set key, ServiceProvider
 
 				ServiceProvider.register @container
