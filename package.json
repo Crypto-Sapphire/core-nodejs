@@ -3,7 +3,7 @@
   "main": "index",
   "version": "0.0.3",
   "dependencies": {
-    "@emerald-js/container": "^0.0.5",
+    "@emerald-js/container": "~0.0.8",
     "dotenv": "^6.0.0",
     "require-dir": "^1.0.0",
     "winston": "^2.*.*"

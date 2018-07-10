@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@emerald-js/container@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@emerald-js/container/-/container-0.0.5.tgz#8ae1beca99d61704734914c48d163b2fdfaca0ba"
+"@emerald-js/container@~0.0.8":
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/@emerald-js/container/-/container-0.0.8.tgz#56f571ba622a7a7ae50da6f6a08fa57b10ddb614"
 
 ansi-regex@^2.0.0:
   version "2.1.1"
